@@ -7,14 +7,6 @@ const Dashboard = () => {
     const [articles, setArticles] = useState([]);
     const navigate = useNavigate();
 
-    const logout = () => {
-        localStorage.removeItem('token');
-    };
-
-    const handleLogout = () => {
-        logout();
-        navigate('/');
-    };
 
     const fetchArticles = async () => {
         try {
@@ -43,17 +35,11 @@ const Dashboard = () => {
     }, []);
 
     return (
-        <div className="p-6">
+        <div className="p-20">
             <div className="flex justify-between items-center mb-4">
                 <h2 className="text-2xl font-semibold">Articles</h2>
-                <button
-                    onClick={handleLogout}
-                    className="px-3 py-1 bg-slate-400 text-white hover:bg-slate-500 rounded cursor-pointer"
-                >
-                    Logout
-                </button>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 {articles.map((a) => (
                     <ArticleCard key={a._id} article={a} onDelete={fetchArticles} />
                 ))}

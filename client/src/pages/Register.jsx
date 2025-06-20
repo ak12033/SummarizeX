@@ -40,9 +40,9 @@ const Register = () => {
         }, []);
 
     return (
-        <div className="bg-slate-300 h-screen flex justify-center">
+        <div className="bg-slate-300 h-screen flex justify-center pt-20">
             <div className="flex flex-col justify-center">
-                <div className="rounded-lg bg-white w-80 text-center p-2 h-max px-4">
+                <div className="rounded-lg bg-white w-90 text-center p-2 h-max px-4">
                     <Heading label={"Register"} />
                     <InputBox
                         onChange={(e) => setUsername(e.target.value)}
@@ -68,7 +68,7 @@ const Register = () => {
                     <BottomWarning
                         label={"Already have an account?"}
                         buttonText={"Login"}
-                        to={"/dashboard"}
+                        to={"/"}
                     />
                 </div>
             </div>

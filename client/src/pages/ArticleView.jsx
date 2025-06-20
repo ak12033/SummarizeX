@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,6 +11,7 @@ const ArticleView = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [rateLimited, setRateLimited] = useState(false);
     const [showSummary, setShowSummary] = useState(false);
+    const summaryRef = useRef(null);
 
     const load = async () => {
         setArticleLoading(true);
@@ -60,6 +61,11 @@ const ArticleView = () => {
             );
             setSummary(res.data.summary);
             setShowSummary(true);
+
+            // Wait a tick for the DOM to update
+            setTimeout(() => {
+                summaryRef.current?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
         } catch (error) {
             console.error('Summarize error:', error);
             if (error.response && error.response.status === 429) {
@@ -109,7 +115,7 @@ const ArticleView = () => {
 
             {/* Summary content */}
             {showSummary && (
-                <div className="my-6">
+                <div ref={summaryRef} className="my-6">
                     <strong className="block mb-2 text-lg">Summary:</strong>
                     <p className="text-gray-800">{summary}</p>
                 </div>

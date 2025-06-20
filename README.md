@@ -25,7 +25,7 @@
 
 ## 🌐 Live Server
 
-👉 [Live Demo](https://ai-powered-knowledge-hub-sik3.vercel.app/)
+👉 [Live Demo](https://summarize-x-iyrx.vercel.app/)
 
 ---
 
